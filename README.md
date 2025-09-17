@@ -1,87 +1,267 @@
 # Liquidity Nexus - Base Mini App
 
-A decentralized platform for users to easily supply liquidity, borrow assets with optimized rates, and manage their crypto portfolios on Base.
+## 🎯 Overview
 
-## Features
+**Liquidity Nexus** is a decentralized platform for users to easily supply liquidity, borrow assets with optimized rates, and manage their crypto portfolios on Base.
 
-- **Simplified Yield Optimization**: Automated strategies to maximize returns on supplied assets
-- **Risk-Adjusted Return Transparency**: Clear display of potential risks alongside projected earnings
-- **Dynamic Rate Discovery**: Finding the most competitive borrowing rates across different protocols
-- **Intuitive Collateral Management**: Easy-to-use interface for managing positions and preventing liquidations
+**Tagline**: Supercharge Your Crypto Yields: Supply, Borrow, and Earn with Confidence.
 
-## Tech Stack
+## ✨ Features
 
-- **Framework**: Next.js 15 with App Router
-- **Blockchain**: Base Network
-- **Wallet Integration**: MiniKit + OnchainKit
-- **Styling**: Tailwind CSS with custom design system
-- **TypeScript**: Full type safety throughout
+### Core DeFi Features
+- **Supply Assets**: Supply tokens to earn yield through Aave V3 protocol
+- **Borrow Assets**: Borrow against collateral with real-time health factor monitoring
+- **Yield Strategies**: Automated strategies with different risk profiles
+- **Portfolio Dashboard**: Real-time balance and position tracking
+- **Risk Management**: Health factor calculations and liquidation alerts
 
-## Getting Started
+### Technical Features
+- **Base Network Integration**: Full blockchain integration with Base network
+- **Coinbase Wallet**: Seamless wallet connection and transaction handling
+- **Farcaster Frames**: Embeddable in Farcaster for social DeFi
+- **Real-time Data**: Live APY rates and market data
+- **Mobile Optimized**: Perfect mobile-first DeFi experience
 
-1. Clone the repository
-2. Install dependencies:
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- Coinbase Wallet or compatible Web3 wallet
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/vistara-apps/ec32b043-343d-4aea-b323-6cbbdd17780e.git
+   cd ec32b043-343d-4aea-b323-6cbbdd17780e
+   ```
+
+2. **Install dependencies**:
    ```bash
    npm install
    ```
 
-3. Set up environment variables:
+3. **Environment Setup**:
    ```bash
    cp .env.local.example .env.local
    ```
-   Add your OnchainKit API key from [Coinbase Developer Platform](https://portal.cdp.coinbase.com/)
 
-4. Run the development server:
+   Edit `.env.local` and add your configuration:
+   ```env
+   NEXT_PUBLIC_ONCHAINKIT_API_KEY=your_onchainkit_api_key
+   NEXT_PUBLIC_BASE_RPC_URL=https://mainnet.base.org
+   NEXT_PUBLIC_ALCHEMY_API_KEY=your_alchemy_api_key
+   ```
+
+4. **Development Server**:
    ```bash
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. **Build for Production**:
+   ```bash
+   npm run build
+   npm start
+   ```
 
-## Project Structure
+## 🏗️ Architecture
 
+### Tech Stack
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **Blockchain**: Base Network with viem/wagmi
+- **Wallet**: Coinbase Wallet SDK
+- **UI Components**: Custom component library
+
+### Project Structure
 ```
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout with providers
-│   ├── page.tsx           # Main application page
-│   ├── providers.tsx      # MiniKit and OnchainKit providers
-│   └── globals.css        # Global styles and design tokens
-├── components/
-│   ├── ui/                # Reusable UI components
-│   ├── layout/            # Layout components
-│   └── features/          # Feature-specific components
-├── lib/
-│   ├── types.ts           # TypeScript type definitions
-│   ├── utils.ts           # Utility functions
-│   └── constants.ts       # App constants and mock data
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes (Farcaster frames)
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx          # Main page
+│   └── providers.tsx     # Context providers
+├── components/            # React components
+│   ├── features/         # Feature components
+│   ├── layout/           # Layout components
+│   └── ui/               # UI components
+├── lib/                  # Utilities and services
+│   ├── constants.ts      # App constants
+│   ├── types.ts          # TypeScript types
+│   └── utils.ts          # Utility functions
+└── public/               # Static assets
 ```
 
-## Design System
+## 📊 Data Model
 
-The app uses a custom design system with:
-- **Primary Color**: Blue (`hsl(200, 80%, 50%)`)
-- **Accent Color**: Gold (`hsl(40, 90%, 55%)`)
-- **Glass morphism effects** for modern UI
-- **Mobile-first responsive design**
-- **Consistent spacing and typography**
+### User
+```typescript
+interface User {
+  userId: string;
+  connectedWalletAddress: string;
+  notificationPreferences: NotificationPreferences;
+  transactionHistoryId: string;
+}
+```
 
-## Key Components
+### Position
+```typescript
+interface Position {
+  positionId: string;
+  userId: string;
+  assetSupplied: string;
+  assetBorrowed?: string;
+  suppliedAmount: number;
+  borrowedAmount?: number;
+  apy: number;
+  riskScore: 'low' | 'medium' | 'high';
+  healthFactor: number;
+  status: 'active' | 'liquidated' | 'closed';
+}
+```
 
-- **Dashboard**: Portfolio overview and position management
-- **Supply Interface**: Asset supply with APY optimization
-- **Borrow Interface**: Collateralized borrowing with health factor monitoring
-- **Yield Strategies**: Automated yield farming strategies
-- **Wallet Connection**: MiniKit-powered wallet integration
+### Transaction
+```typescript
+interface Transaction {
+  transactionId: string;
+  userId: string;
+  type: 'supply' | 'borrow' | 'repay' | 'withdraw';
+  asset: string;
+  amount: number;
+  timestamp: number;
+  status: 'pending' | 'confirmed' | 'failed';
+  fee: number;
+}
+```
 
-## Development
+## 🎨 Design System
 
-This is a Base Mini App built with:
-- MiniKit for Base App integration
-- OnchainKit for wallet and identity features
-- TypeScript for type safety
-- Tailwind CSS for styling
-- Mock data for demonstration (replace with real DeFi protocol integrations)
+### Color Palette
+- **Primary**: Blue gradient (hsl(200, 80%, 50%))
+- **Accent**: Golden yellow (hsl(40, 90%, 55%))
+- **Background**: Dark gradient
+- **Surface**: Glass morphism cards
+- **Text**: White with opacity variants
 
-## License
+### Components
+- **AppShell**: Main layout with navigation
+- **Card**: Glass morphism container
+- **Button**: Primary, secondary, outline variants
+- **InputWithLabel**: Form input with validation
+- **AssetDisplay**: Token information display
+- **RiskIndicator**: Risk level visualization
+- **Modal**: Transaction confirmation dialogs
 
-MIT License - see LICENSE file for details
+## 🔗 API Integration
+
+### Base Network RPC
+- **Purpose**: Real-time on-chain data fetching
+- **Endpoint**: Alchemy/Infura RPC providers
+- **Data**: Prices, balances, APYs, pool data
+
+### ERC-20 Token ABI
+- **Purpose**: Token balance and approval management
+- **Integration**: viem contract interactions
+- **Features**: Balance fetching, approval flows
+
+### Aave V3 Protocol
+- **Purpose**: Lending and borrowing operations
+- **Contracts**: Supply, borrow, repay, withdraw
+- **Features**: Real APY calculations, health factors
+
+### Farcaster Frames
+- **Purpose**: Social media embeddability
+- **Endpoint**: `/api/frame`
+- **Features**: Interactive buttons, image generation
+
+## 📱 User Flows
+
+### 1. Wallet Connection
+1. User clicks "Connect Wallet"
+2. Coinbase Wallet prompts for authorization
+3. Wallet address displayed
+4. User presented with app intro
+
+### 2. Supplying Liquidity
+1. Navigate to Supply section
+2. Select asset and amount
+3. Review APY and risk indicators
+4. Confirm transaction in wallet
+5. Position created and displayed
+
+### 3. Borrowing Assets
+1. Navigate to Borrow section
+2. Select asset and amount
+3. Review collateral requirements
+4. Confirm transaction in wallet
+5. Borrowed assets received
+
+### 4. Managing Positions
+1. View active positions in Dashboard
+2. Monitor health factors and APYs
+3. Execute repay/withdraw actions
+4. Real-time position updates
+
+## 🚀 Deployment
+
+### Environment Variables
+```env
+NEXT_PUBLIC_ONCHAINKIT_API_KEY=your_api_key
+NEXT_PUBLIC_BASE_RPC_URL=https://mainnet.base.org
+NEXT_PUBLIC_ALCHEMY_API_KEY=your_alchemy_key
+```
+
+### Build Commands
+```bash
+# Development
+npm run dev
+
+# Production build
+npm run build
+
+# Start production server
+npm start
+```
+
+### Farcaster Frame Deployment
+The app includes Farcaster frame support at `/api/frame` for embedding in Farcaster posts.
+
+## 🔒 Security
+
+- **Input Validation**: All user inputs validated
+- **Transaction Safety**: Gas estimation and error handling
+- **Wallet Security**: Secure wallet connection flows
+- **Contract Interactions**: Safe contract ABIs and error handling
+
+## 📈 Performance
+
+- **Optimized Builds**: Next.js production optimizations
+- **Lazy Loading**: Component and route lazy loading
+- **Caching**: Efficient data caching strategies
+- **Mobile First**: Optimized for mobile DeFi usage
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Check the documentation
+- Review the API specifications
+
+---
+
+**Built with ❤️ for the Base ecosystem**
+
