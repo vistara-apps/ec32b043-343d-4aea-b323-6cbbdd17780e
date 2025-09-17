@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "Liquidity Nexus",
+    "subtitle": "Built with Zara",
+    "description": "Liquidity Nexus is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://ec32b043343d4aeab3236cbbdd17780e-stgb.vercel.app",
+    "splashImageUrl": "https://ec32b043343d4aeab3236cbbdd17780e-stgb.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://ec32b043343d4aeab3236cbbdd17780e-stgb.vercel.app/image.png",
+    "tagline": "Liquidity Nexus",
+    "screenshotUrls": [
+      "https://ec32b043343d4aeab3236cbbdd17780e-stgb.vercel.app/screenshot.png",
+      "https://ec32b043343d4aeab3236cbbdd17780e-stgb.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://ec32b043343d4aeab3236cbbdd17780e-stgb.vercel.app/api/webhook"
+  }
+}

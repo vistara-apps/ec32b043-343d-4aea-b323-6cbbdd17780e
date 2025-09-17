@@ -1,0 +1,14 @@
+{
+  "name": "Liquidity Nexus",
+  "description": "Liquidity Nexus is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://ec32b043-343d-4aea-b323-6cbbdd17780e.vercel.app",
+  "properties": {
+    "app": {
+      "name": "Liquidity Nexus",
+      "description": "Liquidity Nexus is a Base Mini App built with Zara.",
+      "url": "https://ec32b043-343d-4aea-b323-6cbbdd17780e.vercel.app",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}
