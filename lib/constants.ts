@@ -86,4 +86,5 @@ export const NAVIGATION_ITEMS = [
   { id: 'supply', label: 'Supply', icon: '💰' },
   { id: 'borrow', label: 'Borrow', icon: '🏦' },
   { id: 'strategies', label: 'Strategies', icon: '🎯' },
+  { id: 'x402-test', label: 'X402 Test', icon: '⚡' },
 ];
