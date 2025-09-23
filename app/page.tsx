@@ -7,6 +7,7 @@ import { Dashboard } from '@/components/features/Dashboard';
 import { SupplyInterface } from '@/components/features/SupplyInterface';
 import { BorrowInterface } from '@/components/features/BorrowInterface';
 import { YieldStrategies } from '@/components/features/YieldStrategies';
+import { X402TestSuite } from '@/components/features/X402TestSuite';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -26,6 +27,8 @@ export default function Home() {
         return <BorrowInterface />;
       case 'strategies':
         return <YieldStrategies />;
+      case 'x402-test':
+        return <X402TestSuite />;
       default:
         return <Dashboard />;
     }
